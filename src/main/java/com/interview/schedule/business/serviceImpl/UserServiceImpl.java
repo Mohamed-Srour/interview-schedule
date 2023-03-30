@@ -3,6 +3,7 @@ package com.interview.schedule.business.serviceImpl;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.jdbc.Expectation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,15 @@ public class UserServiceImpl implements UserService{
         Optional<User>user= userRepo.findById(id);
         user.orElseThrow(()->new ResourceNotFoundException(id));
         return userMapper.map(user.get());
+    }
+
+    @Override
+    public User findUserByEmailId(String emailId ,Long id) throws Exception{
+        User user=userRepo.findUserByEmailId(emailId,id);
+        if(user !=null)
+        return user;
+        else
+        throw new Exception("No user found");
     }
     
 }

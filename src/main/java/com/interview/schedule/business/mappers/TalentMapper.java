@@ -10,7 +10,7 @@ import com.interview.schedule.persistence.entities.Talent;
 @Mapper(componentModel = "spring")
 public interface TalentMapper {
     
-    Talent map(TalentDto talentDto) ;
+    Talent map(TalentDto talentDto);
 
     TalentDto map(Talent talent);
 

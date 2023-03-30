@@ -37,5 +37,13 @@ public class CandidateServiceImpl implements CandidateService{
         candidate.orElseThrow(()->new ResourceNotFoundException(id));
         return candidateMapper.map(candidate.get()); 
     }
+    @Override
+    public Candidate findCandidateByEmailId(String Emailid,Long id) throws Exception{
+        Candidate candidate=candidateRepo.findCandidateByEmailId(Emailid,id);
+        if(candidate !=null)
+        return candidate;
+        else
+        throw new Exception("No candidate found");
+    }
     
 }
